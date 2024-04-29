@@ -1,10 +1,11 @@
-package Main;
+package main;
+
+import services.Menu;
 
 public class main {
 
 	public static void main(String[] args) {
-		System.out.print("hej :-)");
-
+		Menu menu = new Menu();
+		menu.Run();
 	}
-
 }
