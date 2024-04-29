@@ -2,10 +2,8 @@ package services;
 
 import model.Triangle;
 
-public class TrigenometryCalculator {
-	public TrigenometryCalculator() {
-		
-	}
+public class TrigonometryCalculator {
+	
 	public Triangle.TriangleType DetermineTriangleType(Triangle triangle){
 		if(triangle.getSideA() == triangle.getSideB() && triangle.getSideA() == triangle.getSideC()) {			//All sides equal
 			return Triangle.TriangleType.equilateral;

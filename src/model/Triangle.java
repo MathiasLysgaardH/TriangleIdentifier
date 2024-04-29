@@ -37,9 +37,9 @@ public class Triangle {
 	}
 	
 	private void Validate() throws InvalidTriangleException {
-		if(this.sideA + this.sideB < this.sideC||
-		   this.sideA + this.sideC < this.sideB||
-		   this.sideB + this.sideC < this.sideA  ) {
+		if(this.sideA + this.sideB <= this.sideC||
+		   this.sideA + this.sideC <= this.sideB||
+		   this.sideB + this.sideC <= this.sideA  ) {
 			throw new InvalidTriangleException("Described triangle is impossible.");
 		}
 	}

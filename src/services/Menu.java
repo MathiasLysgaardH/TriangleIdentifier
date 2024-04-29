@@ -2,14 +2,12 @@ package services;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import model.Triangle;
 
 public class Menu {
-	public Menu() {
-		
-	}
 	
 	public void Run() {
 		System.out.println("Welcome to the triangle identifier.");
@@ -25,7 +23,7 @@ public class Menu {
 				System.out.println(e.getMessage());
 			}
 		}
-		TrigenometryCalculator calculator = new TrigenometryCalculator();
+		TrigonometryCalculator calculator = new TrigonometryCalculator();
 		Triangle.TriangleType triangleType = calculator.DetermineTriangleType(triangle);
 		if(triangleType == Triangle.TriangleType.scalene) {
 			System.out.println("Your triangle is a " + triangleType + " triangle.");
@@ -38,16 +36,17 @@ public class Menu {
 	private double getPositiveDoubleFromUser(String valueName) {
 		Scanner scanner = new Scanner(System.in);
 		double input = -1.0;
-		while(input <= 0.0) {
+		while(input <= 0.0 || Double.isNaN(input) || !Double.isFinite(input)) {
 			System.out.print(valueName + ": ");
 			try {
-				input = scanner.nextDouble();
-				if(input <= 0.0) {
+				input = Double.parseDouble(scanner.nextLine());
+				if(input <= 0.0 || Double.isNaN(input) || !Double.isFinite(input) ) {
 					throw new InputMismatchException();
 				}
 			}catch(InputMismatchException e) {
 				System.out.println("Please input a valid, positive number.");
-				scanner.nextLine();
+			}catch(NoSuchElementException e) {
+				System.out.println("Please dont put NaN or Infinity.");
 			}
 		}
 		return input;
