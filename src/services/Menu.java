@@ -14,11 +14,24 @@ public class Menu {
 	public void Run() {
 		System.out.println("Welcome to the triangle identifier.");
 		System.out.println("Please input the length of the sides of your triangle:");
-		
-		double sideA = getPositiveDoubleFromUser("Side A");
-		double sideB = getPositiveDoubleFromUser("side B");
-		double sideC = getPositiveDoubleFromUser("Side C");
-		Triangle triangle = new Triangle(sideA, sideB, sideC); 
+		Triangle triangle = null;
+		while(triangle == null) {
+			double sideA = getPositiveDoubleFromUser("Side A");
+			double sideB = getPositiveDoubleFromUser("side B");
+			double sideC = getPositiveDoubleFromUser("Side C");
+			try {
+				triangle = new Triangle(sideA, sideB, sideC); 
+			}catch(InvalidTriangleException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		TrigenometryCalculator calculator = new TrigenometryCalculator();
+		Triangle.TriangleType triangleType = calculator.DetermineTriangleType(triangle);
+		if(triangleType == Triangle.TriangleType.scalene) {
+			System.out.println("Your triangle is a " + triangleType + " triangle.");
+		}else {
+			System.out.println("Your triangle is an " + triangleType + " triangle.");
+		}
 	}
 		
 	
