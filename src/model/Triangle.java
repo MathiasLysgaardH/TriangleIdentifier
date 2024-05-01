@@ -1,9 +1,11 @@
 package model;
 
 import services.InvalidTriangleException;
+import services.TrigonometryCalculator;
 
 public class Triangle {
 	private double sideA, sideB, sideC;
+	private TriangleType triangleType;
 	
 	public Triangle(double sideA, double sideB, double sideC) throws InvalidTriangleException {
 		this.sideA = sideA;
@@ -36,6 +38,13 @@ public class Triangle {
 		this.sideC = sideC;
 	}
 	
+	
+	public TriangleType getTriangleType() {
+		TrigonometryCalculator calculator = new TrigonometryCalculator();
+		return calculator.DetermineTriangleType(this);
+	}
+
+	
 	private void Validate() throws InvalidTriangleException {
 		if(sideA <= 0 || sideB <= 0 || sideC <= 0 ) {
 			throw new InvalidTriangleException("Triangle cannot have negative-length sides");
@@ -45,7 +54,7 @@ public class Triangle {
 			throw new InvalidTriangleException("Described triangle is impossible.");
 		}
 	}
-	
+
 	public enum TriangleType{
 		equilateral,
 		isosceles,

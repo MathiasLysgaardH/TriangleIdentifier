@@ -25,8 +25,7 @@ public class Menu {
 				System.out.println(e.getMessage());
 			}
 		}
-		TrigonometryCalculator calculator = new TrigonometryCalculator();
-		Triangle.TriangleType triangleType = calculator.DetermineTriangleType(triangle);
+		Triangle.TriangleType triangleType = triangle.getTriangleType();
 		if(triangleType == Triangle.TriangleType.scalene) {
 			System.out.println("Your triangle is a " + triangleType + " triangle.");
 		}else {
