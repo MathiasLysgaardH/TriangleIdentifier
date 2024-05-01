@@ -54,7 +54,7 @@ class TrigonometryTest {
 	}
 	
 	@Test
-	void CreateEquilateralTriange() {
+	void CreateEquilateralTriangle() {
 		Triangle triangle = null;
 		try {
 			triangle = new Triangle(1.0, 1.0, 1.0);
@@ -65,7 +65,7 @@ class TrigonometryTest {
 	}
 	
 	@Test
-	void CreateIsoscelesTriange() {
+	void CreateIsoscelesTriangle() {
 		Triangle triangleAB = null, triangleAC = null, triangleBC = null;
 		try {
 			triangleAB = new Triangle(2.0, 2.0, 1.0);
